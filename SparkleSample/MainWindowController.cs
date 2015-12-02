@@ -49,7 +49,7 @@ namespace SparkleSample
 
         void UpdateDateLabel()
         {
-            var lastUpdated = nsRef.AddSeconds(updater.LastUpdateCheckDate.SecondsSinceReferenceDate);
+            var lastUpdated = nsRef.AddSeconds(updater.LastUpdateCheckDate?.SecondsSinceReferenceDate ?? 0);
             DateLabel.StringValue = TimeZoneInfo.ConvertTimeFromUtc(lastUpdated, TimeZoneInfo.Local).ToString("u");
         }
     }

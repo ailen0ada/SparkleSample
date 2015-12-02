@@ -16,7 +16,7 @@ namespace SparkleSample
 
         static void Main(string[] args)
         {
-            if (Dlfcn.dlopen(Path.Combine(GetCurrentExecutingDirectory(), "Sparkle"), 0) == IntPtr.Zero)
+            if (Dlfcn.dlopen(Path.Combine(GetCurrentExecutingDirectory(), "Sparkle.framework", "Sparkle"), 0) == IntPtr.Zero)
             {
                 Console.Error.WriteLine("Unable to load the dynamic library.");
                 Environment.Exit(1);

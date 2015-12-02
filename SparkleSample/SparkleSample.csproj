@@ -30,9 +30,12 @@
     <EnablePackageSigning>false</EnablePackageSigning>
     <CustomCommands>
       <CustomCommands>
-        <Command type="AfterBuild" command="cp ${SolutionDir}/Sparkle.XamMac/Sparkle.framework/Sparkle ./MonoBundle/" workingdir="${TargetDir}/${ProjectName}.app/Contents" />
+        <Command type="AfterBuild" command="cp -R ${SolutionDir}/Sparkle.XamMac/Sparkle.framework ./MonoBundle/" workingdir="${TargetDir}/${ProjectName}.app/Contents" />
       </CustomCommands>
     </CustomCommands>
+    <PackageSigningKey>Developer ID Installer</PackageSigningKey>
+    <XamMacArch>x86_64</XamMacArch>
+    <LangVersion>6</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -51,10 +54,11 @@
     <EnablePackageSigning>false</EnablePackageSigning>
     <CustomCommands>
       <CustomCommands>
-        <Command type="AfterBuild" command="cp ${SolutionDir}/Sparkle.XamMac/Sparkle.framework/Sparkle ./MonoBundle/" workingdir="${TargetDir}/${ProjectName}.app/Contents" />
+        <Command type="AfterBuild" command="cp -R ${SolutionDir}/Sparkle.XamMac/Sparkle.framework ./MonoBundle/" workingdir="${TargetDir}/${ProjectName}.app/Contents" />
       </CustomCommands>
     </CustomCommands>
     <PackageSigningKey>Developer ID Installer</PackageSigningKey>
+    <LangVersion>6</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
