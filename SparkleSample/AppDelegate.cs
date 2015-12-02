@@ -1,13 +1,13 @@
 ﻿using AppKit;
 using Foundation;
 using Sparkle;
-using System;
 
 namespace SparkleSample
 {
-    [Register("AppDelegate")]
-    public class AppDelegate : NSApplicationDelegate
+    public partial class AppDelegate : NSApplicationDelegate
     {
+        MainWindowController mainWindowController;
+
         public AppDelegate()
         {
         }
@@ -15,10 +15,10 @@ namespace SparkleSample
         public override void DidFinishLaunching(NSNotification notification)
         {
             var updater = SUUpdater.SharedUpdater;
-            updater.FeedURL = new NSUrl();
-            updater.AutomaticallyChecksForUpdates = true;
-            updater.UpdateCheckInterval = TimeSpan.FromDays(1).TotalSeconds;
-            updater.CheckForUpdates(this);
+            updater.AutomaticallyChecksForUpdates = false;
+
+            mainWindowController = new MainWindowController();
+            mainWindowController.Window.MakeKeyAndOrderFront(this);
         }
 
         public override void WillTerminate(NSNotification notification)
@@ -27,4 +27,3 @@ namespace SparkleSample
         }
     }
 }
-

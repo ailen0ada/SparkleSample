@@ -4,13 +4,13 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectTypeGuids>{A3F8F2AB-B479-4A4A-A458-A89E7DC349F1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProjectGuid>{3CB3595C-1927-4B6C-978D-254756F48589}</ProjectGuid>
+    <ProjectGuid>{0F1BA364-88B9-4EEB-A0BC-8FFD2C9310A7}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>SparkleSample</RootNamespace>
     <MonoMacResourcePrefix>Resources</MonoMacResourcePrefix>
     <AssemblyName>SparkleSample</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <TargetFrameworkIdentifier>Xamarin.Mac</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,11 +31,9 @@
     <EnablePackageSigning>false</EnablePackageSigning>
     <CustomCommands>
       <CustomCommands>
-        <Command type="AfterBuild" command="cp ${SolutionDir}/Sparkle.XamMac/Sparkle ./MonoBundle/" workingdir="${TargetDir}/${ProjectName}.app/Contents" />
+        <Command type="AfterBuild" command="cp ${SolutionDir}/Sparkle.XamMac/Sparkle.framework/Sparkle ./MonoBundle/" workingdir="${TargetDir}/${ProjectName}.app/Contents" />
       </CustomCommands>
     </CustomCommands>
-    <PackageSigningKey>Developer ID Installer</PackageSigningKey>
-    <XamMacArch>x86_64</XamMacArch>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -80,14 +78,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
+    <Compile Include="MainWindow.cs" />
+    <Compile Include="MainWindow.designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindowController.cs" />
+    <Compile Include="MainWindowController.designer.cs">
+      <DependentUpon>MainWindowController.cs</DependentUpon>
+    </Compile>
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="ViewController.cs" />
-    <Compile Include="ViewController.designer.cs">
-      <DependentUpon>ViewController.cs</DependentUpon>
+    <Compile Include="AppDelegate.designer.cs">
+      <DependentUpon>AppDelegate.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <InterfaceDefinition Include="Main.storyboard" />
+    <InterfaceDefinition Include="MainMenu.xib" />
+    <InterfaceDefinition Include="MainWindow.xib" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
+  <ItemGroup>
+    <BundleResource Include="Resources\dsa_pub.pem" />
+  </ItemGroup>
 </Project>
