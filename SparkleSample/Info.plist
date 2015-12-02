@@ -6,8 +6,6 @@
 	<string>SparkleSample</string>
 	<key>CFBundleIdentifier</key>
 	<string>jp.co.imagica.sparklesample</string>
-	<key>CFBundleShortVersionString</key>
-	<string>2.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSMinimumSystemVersion</key>
@@ -32,5 +30,7 @@
 	<string>dsa_pub.pem</string>
 	<key>SUFeedURL</key>
 	<string>https://raw.githubusercontent.com/ailen0ada/SparkleSample/master/appcast.xml</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
 </dict>
 </plist>

@@ -1,5 +1,4 @@
 ﻿using System;
-
 using Foundation;
 using AppKit;
 using Sparkle;
@@ -30,8 +29,8 @@ namespace SparkleSample
         public override void AwakeFromNib()
         {
             base.AwakeFromNib();
-
-            updater = SUUpdater.SharedUpdater;
+            updater = new SUUpdater();
+            updater.AutomaticallyChecksForUpdates = false;
             UpdateDateLabel();
         }
 
@@ -44,7 +43,7 @@ namespace SparkleSample
 
         partial void CheckUpdates(NSObject sender)
         {
-            updater.CheckForUpdates(this);
+            updater.CheckForUpdates(new NSObject());
             UpdateDateLabel();
         }
 

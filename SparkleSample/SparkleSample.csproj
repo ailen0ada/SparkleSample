@@ -9,8 +9,7 @@
     <RootNamespace>SparkleSample</RootNamespace>
     <MonoMacResourcePrefix>Resources</MonoMacResourcePrefix>
     <AssemblyName>SparkleSample</AssemblyName>
-    <TargetFrameworkIdentifier>Xamarin.Mac</TargetFrameworkIdentifier>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <UseXamMacFullFramework>true</UseXamMacFullFramework>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,7 +41,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <LinkMode>SdkOnly</LinkMode>
     <Profiling>false</Profiling>
     <UseRefCounting>true</UseRefCounting>
     <UseSGen>true</UseSGen>
@@ -51,6 +49,12 @@
     <CodeSigningKey>Developer ID Application</CodeSigningKey>
     <EnableCodeSigning>true</EnableCodeSigning>
     <EnablePackageSigning>false</EnablePackageSigning>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="AfterBuild" command="cp ${SolutionDir}/Sparkle.XamMac/Sparkle.framework/Sparkle ./MonoBundle/" workingdir="${TargetDir}/${ProjectName}.app/Contents" />
+      </CustomCommands>
+    </CustomCommands>
+    <PackageSigningKey>Developer ID Installer</PackageSigningKey>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
